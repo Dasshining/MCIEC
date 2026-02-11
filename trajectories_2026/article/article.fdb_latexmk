@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1770772799.6822 "/home/aldoluna/MCICE/trajectories_2026/article/article.tex" "article.pdf" "article" 1770772800.78314 0
-  "/home/aldoluna/MCICE/trajectories_2026/article/article.tex" 1770772798.18033 13923 af2ef049814cc5ac292bfae1bf799d46 ""
+["pdflatex"] 1770823345.32019 "/home/aldoluna/MCICE/trajectories_2026/article/article.tex" "article.pdf" "article" 1770823346.70744 0
+  "/home/aldoluna/MCICE/trajectories_2026/article/article.tex" 1770823343.5447 16130 b0b566ac6fe4eb78b66463e1e4f0076b ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -114,9 +114,9 @@
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1763352206 3635534 52c27b317f5c25792e9f0105a19361a4 ""
   "/usr/local/texlive/2025/texmf.cnf" 1763352052.03654 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
   "Figure_1.png" 1770326106.50738 89538 15100ee0e697f1d85251dcf39aaa3a56 ""
-  "article.aux" 1770772800.65155 2862 832cfc3f6d0ae622c62a00895636fed6 "pdflatex"
-  "article.out" 1770772800.65318 364 14b0596e35488da974c6d7f57ce34fa5 "pdflatex"
-  "article.tex" 1770772798.18033 13923 af2ef049814cc5ac292bfae1bf799d46 ""
+  "article.aux" 1770823346.50467 2896 9d81648478a03b5937651d00ae2d4772 "pdflatex"
+  "article.out" 1770823346.50567 364 14b0596e35488da974c6d7f57ce34fa5 "pdflatex"
+  "article.tex" 1770823343.5447 16130 b0b566ac6fe4eb78b66463e1e4f0076b ""
   "gen_037.png" 1770326101.55542 524904 b9fae9606dc0c2f45a4b963370b993fb ""
   (generated)
   "article.aux"
