@@ -1,0 +1,6 @@
+filters:
+  and:
+    - file.path.startsWith("Notes")
+views:
+  - type: table
+    name: Table

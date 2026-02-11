@@ -1,0 +1,290 @@
+% This is the English translation of the report in LLNCS format.
+\documentclass[runningheads]{llncs}
+
+% --- PACKAGES ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} % Changed to English
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{color}
+\usepackage[hidelinks]{hyperref}
+\renewcommand\UrlFont{\color{blue}\rmfamily}
+
+% --- LISTINGS CONFIGURATION ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeblue}{rgb}{0,0,0.8}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codeblue},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+% --- HEADER (Title, Author, Institute) ---
+\title{Optimization of Trunk Public Transport Routes in Guadalajara}
+% \titlerunning{Route Optimization in Guadalajara} % Optional if title is too long
+
+\author{Rafael Aldo Hernández Luna}
+\authorrunning{R. A. Hernández Luna}
+
+\institute{University Center of Exact Sciences and Engineering (CUCEI),\and
+University of Guadalajara, Guadalajara, Mexico\\
+\email{Project Report - Intelligent Systems}}
+\url{https://www.cucei.udg.mx/}
+\maketitle
+
+% --- ABSTRACT ---
+\begin{abstract}
+This report presents the development of an intelligent system for the
+optimization of urban bus routes using genetic algorithms and graph theory. The
+problem is addressed by modeling the city as a network of nodes and edges,
+seeking to minimize a hybrid cost function that weighs both the service
+provider's operational costs and the users' travel time. A simulation was
+implemented using a passenger demand matrix, identifying \textbf{hotspots} or
+high-traffic points. The results demonstrate the algorithm's capability to
+generate routes that reduce passenger time, although the complexities of
+implementation in a real urban environment due to legal and zoning factors are
+highlighted.
+
+\keywords{Genetic Algorithms \and Route Optimization \and Public Transport \and Graph Theory \and Guadalajara.}
+\end{abstract}
+
+% --- SECTIONS ---
+\section{Introduction}
+Public transportation systems serve as the backbone of sustainable urban
+development, facilitating economic growth and social equity by providing
+essential mobility to the population. As cities expand, the challenge of
+maintaining an efficient, accessible, and sustainable transport network becomes
+increasingly complex. Global studies emphasize that effective public transport
+must not only reduce reliance on private vehicles to lower emissions but also
+ensure equitable access to opportunities for all socioeconomic groups [1].
+However, in many developing metropolitan areas, these systems struggle to meet
+the dual goals of sustainability and efficiency. Reviews of sustainable
+transportation concepts highlight that despite the clear environmental and
+social benefits of public transit, the practical implementation often faces
+significant hurdles related to planning, funding, and adapting to rapid urban
+sprawl [1].
+
+In the context of Mexico, and specifically the Guadalajara Metropolitan Area
+(GMA), these challenges are acute. The public transport system, including the
+main bus lines and the SITEUR (Sistema de Tren Eléctrico Urbano) network, plays
+a critical role in the daily lives of millions. However, recent analyses
+indicate that the current infrastructure is often insufficient to cover the
+"transport social needs" of the population effectively. For instance, studies
+targeting Sustainable Development Goal 11.2 in Guadalajara have found that
+approximately 50.3\% of inhabitants reside in areas with very high social
+transport needs, yet the coverage remains uneven [2]. Furthermore, historical
+reviews of public transport in Guadalajara from 1960 to 2020 reveal that the
+system's efficiency has been hampered by issues related to ownership structure,
+fare policies, and a lack of focus on social justice in route planning [3]. The
+result is a system often characterized by slow transportation times, poor
+accessibility, and insufficient coverage, which directly diminishes the quality
+of life for a significant percentage of inhabitants [3].
+
+Existing literature has extensively documented the sustainability deficits [1]
+and social exclusion caused by the current transport layout in Guadalajara
+[2][3], there is a lack of research focusing on the dynamic and data-driven
+optimization of these specific routes that this research aims to tackle. The
+primary objective is to utilize bio-inspired optimization algorithms and graph
+theory to simulate the passenger flow (affluence) through the city's transport
+network. By modeling the city as a graph where nodes represent stops and edges
+represent routes, this research aims to determine if the current network
+configuration is fit to cover the mobility demand and to demonstrate how
+rearranging routes can improve efficiency, accessibility, and ultimately, the
+quality of life for users.
+
+\section{Methodology}
+
+\subsection{Network Modeling and Representation} 
+To model the complex street network of the Guadalajara Metropolitan Area, this
+study utilizes graph theory, specifically representing the city as a Weighted
+Directed Multigraph. The foundational graph was extracted from real-world
+OpenStreetMap (OSM) data. In this model, nodes represent street intersections or
+specific locations (such as transit stops), while directed edges represent the
+navigable street segments connecting them.
+
+A critical component of this network is the assignment of weights to the edges,
+which symbolize the travel time (impedance) required to traverse a segment.
+Travel time is calculated as a function of the street segment length and an
+estimated traversal speed. To better reflect real-world urban dynamics, a
+dynamic traffic noise multiplier was introduced to the edge weights, simulating
+variable congestion patterns across the network.
+
+Simultaneously, passenger affluence is modeled using a demand matrix. This
+matrix maps the origin-destination (O-D) flow of passengers across the network.
+To represent urban focal points—such as commercial centers, universities, and
+historical districts—specific high-traffic nodes were designated as "hotspots".
+The demand matrix artificially inflates the passenger volume traveling to and
+from these hotspots, providing a realistic baseline of public transport demand.
+
+\subsection{Cost Function Formulation}
+In order to assess alternative public bus routes that enhance time efficiency
+and accessibility, a compound cost function was formulated. This function
+evaluates both the operational expenses of the transit provider and the travel
+time incurred by users traversing from various origins ($A$) to destinations
+($B$) within the multigraph. The objective function $J$ is defined to be
+minimized:
+
+$$J = (C_{operator} \cdot \beta) + (C_{user} \cdot \alpha)$$
+
+The operator cost ($C_{operator}$) is determined by the total temporal duration
+of the proposed routes and an associated operational expense rate (e.g.,
+maintenance, fuel, and wages). It is approximated as:
+
+$$C_{operator} \approx \text{Route Duration} \times \text{Cost per minute}$$
+
+Conversely, the user cost ($C_{user}$) quantifies the total time investment of
+the passengers. It is calculated by aggregating the travel time of all
+passengers across their respective route segments:
+
+$$C_{user} = \sum (\text{Passengers in segment} \times \text{Travel time})$$
+
+The parameters $\alpha$ and $\beta$ serve as scaling factors to steer the
+algorithm's optimization tendency:
+
+- Prioritizing $\beta$: Favors shorter routes with lower operational costs,
+potentially at the expense of network coverage.
+    
+- Prioritizing $\alpha$: Favors longer, more comprehensive routes that provide
+high coverage and reduce user travel time.
+    
+The computational evaluation of this fitness function requires calculating the
+shortest paths for all passengers using the proposed transit network. Below is
+the pseudo-code illustrating the evaluation process:
+
+\begin{algorithm}
+\caption{Compound Cost Function Evaluation}
+\begin{algorithmic}[1]
+\Require Candidate routes ($R$), City Graph ($G$), Passenger Demand Matrix ($D$), Hotspots ($H$)
+\Ensure Total Cost ($J$)
+\State $OperatorCost \gets 0$
+\State $UserCost \gets 0$
+\State $TransitGraph \gets \text{Copy}(G)$
+\Statex \textbf{// Step 1: Calculate Operator Cost \& Update Transit Graph}
+\ForAll{route in $R$}
+    \ForAll{segment $(u, v)$ in route}
+        \State $TravelTime \gets \text{GetEdgeWeight}(G, u, v)$
+        \State $OperatorCost \gets OperatorCost + (TravelTime \times BusSpeedMultiplier) \times CostPerMinute$
+        \State $\text{UpdateEdgeWeight}(TransitGraph, u, v, TravelTime \times BusSpeedMultiplier)$
+    \EndFor
+\EndFor
+\Statex \textbf{// Step 2: Calculate User Cost via Shortest Paths}
+\ForAll{source in $H$}
+    \If{source has departing passengers in $D$}
+        \State $ShortestPaths \gets \text{Dijkstra}(TransitGraph, source)$
+        \ForAll{destination, passenger\_count in $D[source]$}
+            \If{destination is reachable in $ShortestPaths$}
+                \State $UserCost \gets UserCost + (passenger\_count \times ShortestPaths[destination])$
+            \Else
+                \State $UserCost \gets UserCost + (passenger\_count \times UnservedPenalty)$
+            \EndIf
+        \EndFor
+    \EndIf
+\EndFor
+\Statex \textbf{// Step 3: Apply Tendency Parameters}
+\State $J \gets (OperatorCost \times \beta) + (UserCost \times \alpha)$
+\State \Return $J$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Cost Function}
+
+\subsection{Simulation Parameters}
+To ensure a faithful representation of the metropolitan area's reality, the following parameters were used:
+
+\begin{table}
+    \centering
+    \caption{System Parameters} \label{tab:params}
+    \begin{tabular}{@{}ll@{}}
+        \toprule
+        Parameter & Value / Description \\
+        \midrule
+        Walking Speed & 5 km/h \\
+        Bus Speed & 23 km/h (Average per MIDE Jalisco) \\
+        Time Multiplier & $T_{bus} = T_{walking} / T_{bus\_speed}$ \\
+        Base Operation Cost & 1 unit/minute \\
+        Existing Trunk Routes & 21 (Reference) \\
+        Generations & 50 \\
+        Routes in Simulation & 10 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Results}
+The simulation was executed on a graph representing an approximation of the city (due to the computational complexity of processing the full network with OSMnx).
+
+\subsection{Algorithm Evolution}
+The behavior of the algorithm across generations is shown below.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_1.png}
+    \caption{Fitness Evolution over 50 generations. An improvement in the cost function is observed, stabilizing near generation 43.}
+    \label{fig:fitness_graph}
+\end{figure}
+
+The algorithm demonstrated convergence capability. In generation 43, a \textit{Current Fitness} above 37.9 was reached, after which a plateau in fitness values can be seen, indicating that the genetic algorithm successfully explored the non-differentiable search space.
+
+\subsection{Route Visualization}
+The resulting routes showed an interesting tendency to overlap with existing infrastructure lines (Light Rail and Macrobús).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{gen_037.png}
+    \caption{Visualization of the 10 optimized routes on the city graph.}
+    \label{fig:gen_037}
+\end{figure}
+
+\section{Conclusions}
+The genetic algorithm proves to function adequately in finding routes that minimize time costs for passengers. However, transitioning this theoretical model to a real urban development presents additional challenges that cannot be ignored. Although mathematically optimal under the current cost function, the viability of these routes cannot be ensured without considering:
+
+\begin{enumerate}
+    \item \textbf{Legal and Traffic Framework:} Turn restrictions, street directions, and public transport regulations.
+    \item \textbf{Zoning:} The distribution of commercial versus residential zones affects peak hours, something a static demand matrix does not fully capture.
+    \item \textbf{Population Density:} Factors specific to Guadalajara that would add greater complexity to modeling edge weights.
+\end{enumerate}
+
+As future work, it is proposed to revisit the objective function to optimize the processing of full graphs using tools like OSMnx and to refine edge weights with real-time traffic data.
+
+% --- BIBLIOGRAPHY ---
+% Adapted to splncs04 style suggested in samplepaper.tex
+\begin{thebibliography}{8}
+
+\bibitem{consumidor}
+El Poder del Consumidor: Urge transformación de transporte público en Guadalajara y Monterrey: usuarios pierden tiempo, dinero y calidad de vida. Retrieved from: \url{https://elpoderdelconsumidor.org/2015/07/urge-transformacion-de-transporte-publico-en-guadalajara-y-monterrey-usuarios-pierden-tiempo-dinero-y-calidad-de-vida} (2015)
+
+\bibitem{mide}
+MIDE Jalisco: Indicadores de Desarrollo. Retrieved from: \url{https://mide.jalisco.gob.mx} (n.d.)
+
+\bibitem{boeing2025}
+Boeing, G.: Modeling and Analyzing Urban Networks and Amenities with OSMnx. Geographical Analysis. doi:10.1111/gean.70009 (2025)
+
+\bibitem{wiki_rutas}
+Wikipedia: Anexo: Rutas de transporte en Jalisco. Retrieved from: \url{https://es.wikipedia.org/wiki/Anexo:Rutas_de_transporte_en_Jalisco} (n.d.)
+
+\end{thebibliography}
+
+\end{document}
