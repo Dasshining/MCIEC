@@ -23,9 +23,17 @@ Pendientes a revisar dentro del paper de optimizacion de transporte publico:
 - [x] Estructurar introduccion de articulo, delimitar de lo general a lo particular ✅ 2026-02-10
 - [x] Buscar articulo y/o recursos para sustentar la introducción propuesta ✅ 2026-02-10
 ### 10/02/2026
-- [ ] Estructurar metodologia
+- [x] Estructurar metodologia ✅ 2026-02-11
 	- [ ] Invetigar que tanta informacion del codigo es necesario transcribir en el articulo
 - [ ] Buscar articulos y/o recursos para justificar metodologia
+### 11/02/2026
+- [ ] Revisar metodología, ajustar lenguaje al utilizado anteriormente en el articulo
+
+### 12/02/2026
+- [ ] Tarea 2 - Aprendizaje Maquina 📅 2026-02-15 
+- [ ] Tarea 1 - Reconocimiento de patrones📅 2026-02-16 
+- [ ] Tarea 2 - Vision Computacional 📅 2026-02-16 
+
 
 ## Note files
 ![[Notes/Untitled 1.base]]

@@ -20,32 +20,47 @@ imita el funcionamiento de las neuronas en el cerebro
 $$
 v_j = w_{1j}x_1 + w_{2j}x_2 + ... + w_{nj}x_n
 $$
-Algoritm de una neurona binaria:
+Algoritmo de una neurona binaria:
 $$
-z = \sum_{i=1}^{i=n}{w_ix_i = b}
+z = \sum_{i=1}^{i=n}{w_ix_i + b}
 $$
-**Funcion de activacion**: El valor z se pasa a una funcion de activación para determinar la salida del perceptron. La funcion de activacion más comunmente utilizada es la funcoin escalon, que se define como:
+Ecuaciones para actualizacion de pesos:
 $$
-y =
-\begin{Bmatrix}   1 & si & z\ge0\\   0 & si & z < 0   \end{Bmatrix}
-$$
-Esto se puede compactar como:
-$$
-y = \sigma(z)
-$$
-###### Actualizacion de pesos
-El perceptron ajusta sus pesos en funcion del error en la salida predicha. 
-$$
-e = t -y
-$$
-Los pesos se actualizacion segun la regla de aprendizaje del perceptron, que es:
-$$
-w_i = w_i + \triangle w_i
+z = ???? 
 $$
 
-donde el cambio en el peso de $\triangle w_i$ se calcula como:
-$$
-\triangle w_i = n e x_i
-$$
-n = learning rate
+#### Redes neuronales artificiales (ANN)
 
+- Una sola capa oculta -> shallow neural network
+- Dos o más capas ocultas -> deep neural networks
+#### Redes neuronales prealimentadas
+La propagacion hacia adelante es el proceso mediante el cual als entradas inciales se transmiten a traves de la red neuronal hasta generar una salida
+
+### Funciones de activación
+Función lineal: sin una funcion de activacion, una red neuronal con multiples capas se comportaria como una simple combinacion lineal de las entradas, lo que limita su capaciad para resolver problemas complejos.
+#### Funciones comunes
+- Sigmoide: salidas entre 0 y 1, util para problemas de clasificaicon binaria.
+$$
+Sigmoid(z) = \frac{1}{1 + e^-z}
+$$
+- ReLU (Rectified Linear Unit): devuelve 0 para entradas negativas y el valor de entrada para entradas positivas. Es ampliamente utilizado por su eficiencia computacional y su capacidad para reducir problemas de gradiente atenuados.
+$$
+ReLU(z) = max(0,z)
+$$
+- Tanh: similar a la sigmoide pero su salida oscila entre -1 y 1, lo que puede ayudar a centrar los datos.
+$$
+Tan(z) = \frac{e^z - e^-z}{e^z + e^-z}
+$$
+### Entrenamiento de red neuronal
+- Propagacion hacia atras: es un algoritmo que ajusta los pesos de las conexiones de la red con el objetivo de minimizar el error en la salida predicha por el modelo.
+	- Calculo del error: el entrenamiento comienza con una pasada de propagaqcion hacia adelante, donde os datos de entrada se apasan a traves de la red para generar una salida predicha.
+	- La salida predicha secompara con la salida real utilizando una funcion de costo, la diferencia entre ambas se denomina error.
+- Retropopagación del error:
+	- Una vez calculado el error, este se retropropaga a traves de la red, durante este proceso se calcula el gradiente del error con respecto a cada peso en la red. Este gradiente indica como se debe ajustar cada peso para reducir.
+### Funciones de coste
+- Error cuadratico medio (MSE):
+$$
+MSE = \frac{1}{n}\sum_{i=1}^{i=n}{(y_i - y_{output})}
+$$
+
+### Gradiente descendente
