@@ -14,12 +14,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Notes/Algoritmos de Machine Learning.md",
+                "file": "Notes/Prompts.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Algoritmos de Machine Learning"
+              "title": "Prompts"
             }
           }
         ]
@@ -193,11 +193,12 @@
   },
   "active": "134a5781dab20785",
   "lastOpenFiles": [
-    "Notes/Machine Learning.md",
-    "Notes/Algoritmos de Machine Learning.md",
     "Activity tracking.md",
+    "Notes/Quadruped Robots - Structure, Control, and Autonomous Motion.md",
     "Help on article writting.md",
     "Article Trajectories 2026.md",
+    "Notes/Machine Learning.md",
+    "Notes/Algoritmos de Machine Learning.md",
     "Notes/Prompts.md",
     "Notes/Intelligent Systems Paper Options.md",
     "Notes/Untitled.base",
@@ -210,7 +211,6 @@
     "attachments/Pasted image 20260205142041.png",
     "attachments/Pasted image 20260204113546.png",
     "attachments",
-    "Notes/Quadruped Robots - Structure, Control, and Autonomous Motion.md",
     "Notes/Dump Information.md",
     "attachments/Pasted image 20260202121958.png",
     "attachments/Pasted image 20260202120133.png",

@@ -1,0 +1,361 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Reporte: A03 Red Neuronal de una capa}
+\author{Rafael Aldo Hernández Luna}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\hypertarget{red-neuronal-de-una-sola-capa}{%
+\section{Red Neuronal de una sola
+capa}\label{red-neuronal-de-una-sola-capa}}
+
+\hypertarget{dr-carlos-villaseuxf1or}{%
+\subsection{Dr. Carlos Villaseñor}\label{dr-carlos-villaseuxf1or}}
+
+Paso 1. Corre la siguiente casilla para importar la paquetería
+necesaria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 2. Corre el siguiente bloque con las funciones de activación
+programadas en la práctica anterior
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La función de activación lineal se usa en problemas de regresión}
+\KeywordTok{def}\NormalTok{ linear(z, derivative}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\NormalTok{  a }\OperatorTok{=}\NormalTok{ z}
+  \ControlFlowTok{if}\NormalTok{ derivative:}
+\NormalTok{    da }\OperatorTok{=}\NormalTok{ np.ones(z.shape, dtype}\OperatorTok{=}\BuiltInTok{float}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{ a, da}
+  \ControlFlowTok{return}\NormalTok{ a}
+
+\CommentTok{\# La función de activación logística se usa en}
+\CommentTok{\# problemas de clasificación multi{-}etiquetas}
+\KeywordTok{def}\NormalTok{ logistic(z, derivative}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\NormalTok{  a }\OperatorTok{=} \DecValTok{1}\OperatorTok{/}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\NormalTok{ np.exp(}\OperatorTok{{-}}\NormalTok{z))}
+  \ControlFlowTok{if}\NormalTok{ derivative:}
+\NormalTok{    da }\OperatorTok{=}\NormalTok{ np.ones(z.shape, dtype}\OperatorTok{=}\BuiltInTok{float}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{ a, da}
+  \ControlFlowTok{return}\NormalTok{ a}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 3. Programa la función de activación Softmax
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La función de activación Softmax se usa en}
+\CommentTok{\# problemas de clasificación multiclase con un}
+\CommentTok{\# solo ganador}
+\KeywordTok{def}\NormalTok{ softmax(z, derivative}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\NormalTok{  e }\OperatorTok{=}\NormalTok{ np.exp(z }\OperatorTok{{-}}\NormalTok{ np.}\BuiltInTok{max}\NormalTok{(z, axis}\OperatorTok{=}\DecValTok{0}\NormalTok{))}
+\NormalTok{  a }\OperatorTok{=}\NormalTok{ e }\OperatorTok{/}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(e, axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ derivative:}
+\NormalTok{    da }\OperatorTok{=}\NormalTok{ np.ones(z.shape, dtype}\OperatorTok{=}\BuiltInTok{float}\NormalTok{)}
+    \ControlFlowTok{return}\NormalTok{ a, da}
+  \ControlFlowTok{return}\NormalTok{ a}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 4. Programa una clase que represente una red neuronal de una capa
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ OLN:}
+  \CommentTok{"""One{-}Layer Network"""}
+
+  \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, n\_inputs, n\_outputs,}
+\NormalTok{               activation\_funtion}\OperatorTok{=}\NormalTok{linear):}
+      \VariableTok{self}\NormalTok{.w }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(n\_outputs, n\_inputs)}
+      \VariableTok{self}\NormalTok{.b }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(n\_outputs, }\DecValTok{1}\NormalTok{)}
+      \VariableTok{self}\NormalTok{.f }\OperatorTok{=}\NormalTok{ activation\_funtion}
+
+  \KeywordTok{def}\NormalTok{ predict(}\VariableTok{self}\NormalTok{, X):}
+\NormalTok{      Z }\OperatorTok{=} \VariableTok{self}\NormalTok{.w }\OperatorTok{@}\NormalTok{ X }\OperatorTok{+} \VariableTok{self}\NormalTok{.b}
+      \ControlFlowTok{return} \VariableTok{self}\NormalTok{.f(Z)}
+
+  \KeywordTok{def}\NormalTok{ fit(}\VariableTok{self}\NormalTok{, X, Y, epochs}\OperatorTok{=}\DecValTok{1000}\NormalTok{,  lr}\OperatorTok{=}\FloatTok{0.1}\NormalTok{):}
+      \CommentTok{\# Columnas de X}
+\NormalTok{      p }\OperatorTok{=}\NormalTok{ X.shape[}\DecValTok{1}\NormalTok{]}
+
+      \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(epochs):}
+          \CommentTok{\# Propagation {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\NormalTok{          Z }\OperatorTok{=} \VariableTok{self}\NormalTok{.w }\OperatorTok{@}\NormalTok{ X }\OperatorTok{+} \VariableTok{self}\NormalTok{.b}
+\NormalTok{          Yest, dY }\OperatorTok{=} \VariableTok{self}\NormalTok{.f(Z, derivative}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+          \CommentTok{\# Training {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+
+          \CommentTok{\# Calculate local gradient}
+\NormalTok{          lg }\OperatorTok{=}\NormalTok{ (Y }\OperatorTok{{-}}\NormalTok{ Yest) }\OperatorTok{*}\NormalTok{ dY}
+
+          \CommentTok{\# Update parameters}
+          \VariableTok{self}\NormalTok{.w }\OperatorTok{+=}\NormalTok{ (lr}\OperatorTok{/}\NormalTok{p) }\OperatorTok{*}\NormalTok{ lg }\OperatorTok{@}\NormalTok{ X.T}
+          \VariableTok{self}\NormalTok{.b }\OperatorTok{+=}\NormalTok{ (lr}\OperatorTok{/}\NormalTok{p) }\OperatorTok{*}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(lg, axis}\OperatorTok{=}\DecValTok{1}\NormalTok{).reshape(}\OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{primer-experimento-clasificaciuxf3n-multi-etiqueta}{%
+\section{Primer experimento: Clasificación
+multi-etiqueta}\label{primer-experimento-clasificaciuxf3n-multi-etiqueta}}
+
+Paso 5. Carga el archivo 'DataSet\_A03.csv', contiene entradas de dos
+dimensiones y salidas deseadas de 4 dimensiones.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{!}\NormalTok{wget }\StringTok{\textquotesingle{}https://raw.githubusercontent.com/Dr{-}Carlos{-}Villasenor/Clase\_Aprendizaje\_Profundo/refs/heads/main/Datasets/Dataset\_A03.csv\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+--2026-02-13 12:50:10--  https://raw.githubusercontent.com/Dr-Carlos-Villasenor/Clase_Aprendizaje_Profundo/refs/heads/main/Datasets/Dataset_A03.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3864 (3.8K) [text/plain]
+Saving to: ‘Dataset_A03.csv.1’
+
+Dataset_A03.csv.1   100%[===================>]   3.77K  --.-KB/s    in 0s      
+
+2026-02-13 12:50:10 (36.5 MB/s) - ‘Dataset_A03.csv.1’ saved [3864/3864]
+
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.read\_csv(}\StringTok{\textquotesingle{}Dataset\_A03.csv\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 6. Crea la matriz X de entrada y la matriz Y de salidas deseadas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Escribe en el siguiente apartado la matriz X y Y}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.asanyarray(df.iloc[:,}\DecValTok{0}\NormalTok{:}\DecValTok{2}\NormalTok{]).T}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.asanyarray(df.iloc[:,}\DecValTok{2}\NormalTok{:]).T}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 7. Corre la siguiente función que te ayudará a dibujar el
+experimento
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ plot\_data(X, Y, net):}
+\NormalTok{  dot\_c }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}green\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{)}
+\NormalTok{  lin\_c }\OperatorTok{=}\NormalTok{ (}\StringTok{\textquotesingle{}r{-}\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}g{-}\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}b{-}\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}k{-}\textquotesingle{}}\NormalTok{)}
+  \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(X.shape[}\DecValTok{1}\NormalTok{]):}
+\NormalTok{      c }\OperatorTok{=}\NormalTok{ np.argmax(Y[:,i])}
+\NormalTok{      plt.scatter(X[}\DecValTok{0}\NormalTok{,i], X[}\DecValTok{1}\NormalTok{,i], color}\OperatorTok{=}\NormalTok{dot\_c[c], edgecolors}\OperatorTok{=}\StringTok{\textquotesingle{}k\textquotesingle{}}\NormalTok{)}
+
+  \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{4}\NormalTok{):}
+\NormalTok{      w1, w2, b }\OperatorTok{=}\NormalTok{ net.w[i,}\DecValTok{0}\NormalTok{], net.w[i,}\DecValTok{1}\NormalTok{], net.b[i]}
+\NormalTok{      plt.plot([}\OperatorTok{{-}}\FloatTok{0.25}\NormalTok{, }\FloatTok{1.25}\NormalTok{],[(}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{/}\NormalTok{w2)}\OperatorTok{*}\NormalTok{(w1}\OperatorTok{*}\NormalTok{(}\OperatorTok{{-}}\FloatTok{0.25}\NormalTok{)}\OperatorTok{+}\NormalTok{b),(}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{/}\NormalTok{w2)}\OperatorTok{*}\NormalTok{(w1}\OperatorTok{*}\NormalTok{(}\FloatTok{1.25}\NormalTok{)}\OperatorTok{+}\NormalTok{b)], lin\_c[i])}
+
+
+  \CommentTok{\#plt.axis(\textquotesingle{}equal\textquotesingle{})}
+\NormalTok{  plt.xlim([}\OperatorTok{{-}}\FloatTok{0.25}\NormalTok{, }\FloatTok{1.25}\NormalTok{])}
+\NormalTok{  plt.ylim([}\OperatorTok{{-}}\FloatTok{0.25}\NormalTok{, }\FloatTok{1.25}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 8. Crea y entrena tu red neuronal con los datos que trabajaste y
+dibuja el resultado con la función anterior.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{net }\OperatorTok{=}\NormalTok{ OLN(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, logistic)}
+\NormalTok{net.fit(X, Y, epochs}\OperatorTok{=}\DecValTok{1000}\NormalTok{, lr}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{plot\_data(X, Y, net)}
+\NormalTok{plt.savefig(}\StringTok{"plot\_1.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{plot_1.png}
+
+\hypertarget{segundo-experimento-clasificaciuxf3n-con-un-solo-ganador}{%
+\section{Segundo experimento: Clasificación con un solo
+ganador}\label{segundo-experimento-clasificaciuxf3n-con-un-solo-ganador}}
+
+Paso 9. Corre el siguiente ejemplo para generar un conjunto de datos de
+Clasificación con un solo ganador
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generación de Conjunto de datos para clasificación}
+
+\CommentTok{\# Límites}
+\NormalTok{minx }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{5}
+\NormalTok{maxx }\OperatorTok{=} \DecValTok{5}
+
+\CommentTok{\# Número de clases y puntos por clase}
+\NormalTok{classes }\OperatorTok{=} \DecValTok{8}
+\NormalTok{p\_c }\OperatorTok{=} \DecValTok{20}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.zeros((}\DecValTok{2}\NormalTok{, classes }\OperatorTok{*}\NormalTok{ p\_c))}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.zeros((classes, classes }\OperatorTok{*}\NormalTok{ p\_c))}
+
+
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(classes):}
+\NormalTok{    seed }\OperatorTok{=}\NormalTok{ minx }\OperatorTok{+}\NormalTok{ (maxx }\OperatorTok{{-}}\NormalTok{ minx) }\OperatorTok{*}\NormalTok{ np.random.rand(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{    X[:, i}\OperatorTok{*}\NormalTok{p\_c:(i}\OperatorTok{+}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{p\_c] }\OperatorTok{=}\NormalTok{ seed }\OperatorTok{+} \FloatTok{0.15} \OperatorTok{*}\NormalTok{ np.random.randn(}\DecValTok{2}\NormalTok{, p\_c)}
+\NormalTok{    Y[i, i}\OperatorTok{*}\NormalTok{p\_c:(i}\OperatorTok{+}\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{p\_c] }\OperatorTok{=}\NormalTok{ np.ones((}\DecValTok{1}\NormalTok{, p\_c))}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 10. Entrena una red neuronal para aprender el conjunto de datos
+anterior, guarda en la variable Ypred la predicción de todos los datos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Instancia una red neuronal con el numero de entradas, salidas}
+\CommentTok{\# y función de activación correctas}
+\NormalTok{net }\OperatorTok{=}\NormalTok{ OLN(}\DecValTok{2}\NormalTok{, classes, softmax)}
+
+\CommentTok{\# Entrena la red neuronal}
+\NormalTok{net.fit(X, Y, epochs}\OperatorTok{=}\DecValTok{1000}\NormalTok{, lr}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Guarda las predicciones de la red de todos los datos en X}
+\NormalTok{Ypred }\OperatorTok{=}\NormalTok{ net.predict(X)}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 11. Corre el siguiente código para graficar tus resultados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Colores para dibujar las clases}
+
+\NormalTok{cm	}\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}g\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}m\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}k\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}w\textquotesingle{}}\NormalTok{]}
+
+\CommentTok{\# Gráfico con los datos originales}
+\NormalTok{ax1}\OperatorTok{=}\NormalTok{plt.subplot(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{y\_c }\OperatorTok{=}\NormalTok{np.argmax(Y, axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(X.shape[}\DecValTok{1}\NormalTok{]):}
+\NormalTok{    ax1.scatter(X[}\DecValTok{0}\NormalTok{,i], X[}\DecValTok{1}\NormalTok{,i], c}\OperatorTok{=}\NormalTok{cm[y\_c[i]], edgecolors}\OperatorTok{=}\StringTok{\textquotesingle{}k\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax1.axis([}\OperatorTok{{-}}\FloatTok{5.5}\NormalTok{,}\FloatTok{5.5}\NormalTok{,}\OperatorTok{{-}}\FloatTok{5.5}\NormalTok{,}\FloatTok{5.5}\NormalTok{])}
+\NormalTok{ax1.set\_title(}\StringTok{\textquotesingle{}Problema Original\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax1.grid()}
+
+\CommentTok{\# Gráfico de las predicciones de la red}
+\NormalTok{ax2}\OperatorTok{=}\NormalTok{plt.subplot(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{y\_c }\OperatorTok{=}\NormalTok{np.argmax(Ypred, axis}\OperatorTok{=}\DecValTok{0}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(X.shape[}\DecValTok{1}\NormalTok{]):}
+\NormalTok{    ax2.scatter(X[}\DecValTok{0}\NormalTok{,i], X[}\DecValTok{1}\NormalTok{,i], c}\OperatorTok{=}\NormalTok{cm[y\_c[i]], edgecolors}\OperatorTok{=}\StringTok{\textquotesingle{}k\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax2.axis([}\OperatorTok{{-}}\FloatTok{5.5}\NormalTok{,}\FloatTok{5.5}\NormalTok{,}\OperatorTok{{-}}\FloatTok{5.5}\NormalTok{,}\FloatTok{5.5}\NormalTok{])}
+\NormalTok{ax2.set\_title(}\StringTok{\textquotesingle{}Predicción de la red\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax2.grid()}
+
+\NormalTok{plt.savefig(}\StringTok{"l03\_02\_RES\_figure.png"}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{l03_02_RES_figure.png}
+
+\end{document}

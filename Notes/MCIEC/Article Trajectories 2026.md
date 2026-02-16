@@ -155,4 +155,10 @@ The algorithm iteratively evolves the population, continuously plotting the most
 
 [4] Kepaptsoglou, K., & Karlaftis, M. G. (2009). The transit route network design problem: review, methodology and applications. _Public Transport_, 1(4), 291-325. [https://doi.org/10.1007/s12469-009-0014-9](https://doi.org/10.1007/s12469-009-0014-9)
 
-#### Related Papers
+**Urban Graph & Demand Parameters** | Parameter | Value | Description | | :--- | :--- | :--- | | 
+**Graph Source** | OpenStreetMap | Network data extracted for "Guadalajara, Mexico" (Drive network type). | | 
+**Base Travel Speed** | ~24 km/h | Modeled as 400 meters/minute for edge weight calculation. | | 
+**Traffic Noise** | 1.0 - 1.5x | Stochastic multiplier applied to edge weights to simulate variable traffic congestion. | | 
+**Hotspots** | 8 Locations | Key coordinates (e.g., Historic Center, Zapopan, CUCEI) used to generate synthetic high-demand trips. |
+
+$$ \frac{\partial Loss}{\partial z} = \text{prediction} - \text{target} $$

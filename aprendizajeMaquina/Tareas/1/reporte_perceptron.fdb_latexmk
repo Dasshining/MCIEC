@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1770410466.271 "/home/aldoluna/MCICE/aprendizajeMaquina/Tareas/1/reporte_perceptron.tex" "reporte_perceptron.pdf" "reporte_perceptron" 1770410467.19828 0
+["pdflatex"] 1771015164.43897 "/home/aldoluna/MCICE/aprendizajeMaquina/Tareas/1/reporte_perceptron.tex" "reporte_perceptron.pdf" "reporte_perceptron" 1771015165.23842 0
   "/home/aldoluna/MCICE/aprendizajeMaquina/Tareas/1/reporte_perceptron.tex" 1770410465.16609 2415 f3877bf9361ff8221eee2676b305f2df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -56,7 +56,7 @@
   "l01_03_perceptron.py" 1770405400.31879 3707 08471260ff546c50dae4e4c644dd2c89 ""
   "l01_04_prediccion_de_sobrepeso.py" 1770410348.30427 3213 cd6408b8751b18e0d80afa53a3e92d48 ""
   "or_plot.png" 1770405434.98642 22755 34ab1639cef404202dc241c7573a4b66 ""
-  "reporte_perceptron.aux" 1770410467.14907 1335 4744ec5f3f086eca512b0ec6221c5228 "pdflatex"
+  "reporte_perceptron.aux" 1771015165.18867 1335 4744ec5f3f086eca512b0ec6221c5228 "pdflatex"
   "reporte_perceptron.tex" 1770410465.16609 2415 f3877bf9361ff8221eee2676b305f2df ""
   "sobrepeso_norm.png" 1770410357.43818 31729 816eeeafe8872e40847c16d7c28ac0b6 ""
   "sobrepeso_raw.png" 1770410352.09023 28929 3c4ddf74bddd17c987c7743963d178ca ""

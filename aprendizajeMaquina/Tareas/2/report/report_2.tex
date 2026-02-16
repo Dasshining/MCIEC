@@ -1,0 +1,539 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle,
+    literate={á}{{\'a}}1
+        {é}{{\'e}}1
+        {í}{{\'i}}1
+        {ó}{{\'o}}1
+        {ú}{{\'u}}1
+        {ñ}{{\~n}}1
+        {Á}{{\'A}}1
+        {É}{{\'E}}1
+        {Í}{{\'I}}1
+        {Ó}{{\'O}}1
+        {Ú}{{\'U}}1
+        {Ñ}{{\~N}}1
+        {¿}{{\textquestiondown}}1
+        {¡}{{\textexclamdown}}1
+}
+
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Reporte: A02 Neurona Lineal y logística}
+\author{Aldo Luna}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\section{l02\_01\_neurona\_lineal\_(SGD).ipynb}
+
+\hypertarget{neurona-lineal}{%
+\section{Neurona Lineal}\label{neurona-lineal}}
+
+\hypertarget{dr-carlos-villaseuxf1or}{%
+\subsection{Dr. Carlos Villaseñor}\label{dr-carlos-villaseuxf1or}}
+
+Paso 1. Corre la siguiente casilla para importar la paquetería
+necesaria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 2. Revisa el siguiente código de la neurona lineal y completa las
+líneas que faltan
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Linear\_Neuron:}
+
+  \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, n\_inputs, learning\_rate}\OperatorTok{=}\FloatTok{0.1}\NormalTok{):}
+    \VariableTok{self}\NormalTok{.w }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(n\_inputs)}
+    \VariableTok{self}\NormalTok{.b }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand()}
+    \VariableTok{self}\NormalTok{.eta }\OperatorTok{=}\NormalTok{ learning\_rate}
+
+  \KeywordTok{def}\NormalTok{ predict(}\VariableTok{self}\NormalTok{, X):}
+\NormalTok{    Y\_est }\OperatorTok{=}\NormalTok{ np.dot(}\VariableTok{self}\NormalTok{.w, X) }\OperatorTok{+} \VariableTok{self}\NormalTok{.b}
+    \ControlFlowTok{return}\NormalTok{ Y\_est}
+
+  \KeywordTok{def}\NormalTok{ train(}\VariableTok{self}\NormalTok{, X, Y, epochs}\OperatorTok{=}\DecValTok{50}\NormalTok{):}
+\NormalTok{    \_, p }\OperatorTok{=}\NormalTok{ X.shape}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(epochs):}
+        \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(p):                }
+\NormalTok{            y\_est }\OperatorTok{=} \VariableTok{self}\NormalTok{.predict(X[:,i])}
+            \CommentTok{\# Completa las siguientes dos lineas}
+            \VariableTok{self}\NormalTok{.w }\OperatorTok{+=} \VariableTok{self}\NormalTok{.eta }\OperatorTok{*}\NormalTok{ (Y[:,i] }\OperatorTok{{-}}\NormalTok{ y\_est) }\OperatorTok{*}\NormalTok{ X[:,i]}
+            \VariableTok{self}\NormalTok{.b }\OperatorTok{+=} \VariableTok{self}\NormalTok{.eta }\OperatorTok{*}\NormalTok{ (Y[:,i] }\OperatorTok{{-}}\NormalTok{ y\_est)}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 3. Corre el siguiente ejemplo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Ejemplo}
+\NormalTok{p }\OperatorTok{=}\DecValTok{100}
+\NormalTok{x }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(p).reshape(}\DecValTok{1}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{18} \OperatorTok{*}\NormalTok{ x }\OperatorTok{+} \DecValTok{6} \OperatorTok{+} \DecValTok{3} \OperatorTok{*}\NormalTok{ np.random.randn(p)}
+\NormalTok{plt.plot(x,y,}\StringTok{\textquotesingle{}.b\textquotesingle{}}\NormalTok{)}
+
+
+\NormalTok{neuron }\OperatorTok{=}\NormalTok{ Linear\_Neuron(}\DecValTok{1}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\NormalTok{neuron.train(x,y, epochs}\OperatorTok{=}\DecValTok{100}\NormalTok{ )}
+
+\CommentTok{\# Dibujar línea}
+\NormalTok{xn }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{]])}
+\NormalTok{plt.plot(xn.ravel() ,neuron.predict(xn),}\StringTok{\textquotesingle{}{-}{-}r\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{l02_01_fig.png}
+
+\section{l02\_02\_neurona\_lineal\_(BGD).ipynb}
+
+\hypertarget{neurona-lineal}{%
+\section{Neurona Lineal}\label{neurona-lineal}}
+
+\hypertarget{dr-carlos-villaseuxf1or}{%
+\subsection{Dr. Carlos Villaseñor}\label{dr-carlos-villaseuxf1or}}
+
+Paso 1. Corre la siguiente casilla para importar la paquetería
+necesaria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 2. Revisa el siguiente código de la neurona lineal y completa las
+líneas que faltan
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Linear\_Neuron:}
+
+  \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, n\_inputs, learning\_rate}\OperatorTok{=}\FloatTok{0.1}\NormalTok{):}
+    \VariableTok{self}\NormalTok{.w }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(n\_inputs)}
+    \VariableTok{self}\NormalTok{.b }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand()}
+    \VariableTok{self}\NormalTok{.eta }\OperatorTok{=}\NormalTok{ learning\_rate}
+
+  \KeywordTok{def}\NormalTok{ predict(}\VariableTok{self}\NormalTok{, X):}
+\NormalTok{    Y\_est }\OperatorTok{=}\NormalTok{ np.dot(}\VariableTok{self}\NormalTok{.w, X) }\OperatorTok{+} \VariableTok{self}\NormalTok{.b}
+    \ControlFlowTok{return}\NormalTok{ Y\_est}
+
+  \KeywordTok{def}\NormalTok{ train(}\VariableTok{self}\NormalTok{, X, Y, epochs}\OperatorTok{=}\DecValTok{50}\NormalTok{):}
+\NormalTok{    \_, p }\OperatorTok{=}\NormalTok{ X.shape}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(epochs):}
+\NormalTok{        Y\_est }\OperatorTok{=} \VariableTok{self}\NormalTok{.predict(X)}
+        \CommentTok{\# Completa las siguientes líneas de código}
+        \VariableTok{self}\NormalTok{.w }\OperatorTok{+=} \VariableTok{self}\NormalTok{.eta}\OperatorTok{/}\NormalTok{p }\OperatorTok{*}\NormalTok{ np.dot((Y}\OperatorTok{{-}}\NormalTok{Y\_est), X.T).ravel() }\CommentTok{\# (Y{-}Yest) @}
+        \VariableTok{self}\NormalTok{.b }\OperatorTok{+=} \VariableTok{self}\NormalTok{.eta}\OperatorTok{/}\NormalTok{p }\OperatorTok{*}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(Y}\OperatorTok{{-}}\NormalTok{Y\_est)}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 3. Corre el siguiente ejemplo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Ejemplo}
+\NormalTok{p }\OperatorTok{=}\DecValTok{100}
+\NormalTok{x }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(p).reshape(}\DecValTok{1}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{18} \OperatorTok{*}\NormalTok{ x }\OperatorTok{+} \DecValTok{6} \OperatorTok{+} \DecValTok{3} \OperatorTok{*}\NormalTok{ np.random.randn(p)}
+\NormalTok{plt.plot(x,y,}\StringTok{\textquotesingle{}.b\textquotesingle{}}\NormalTok{)}
+
+
+\NormalTok{neuron }\OperatorTok{=}\NormalTok{ Linear\_Neuron(}\DecValTok{1}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\NormalTok{neuron.train(x,y, epochs}\OperatorTok{=}\DecValTok{100}\NormalTok{ )}
+
+\CommentTok{\# Dibujar línea}
+\NormalTok{xn }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{]])}
+\NormalTok{plt.plot(xn.ravel() ,neuron.predict(xn),}\StringTok{\textquotesingle{}{-}{-}r\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.savefig(}\StringTok{"output.png"}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{l02_02_fig.png}
+
+\section{l02\_03\_neurona\_logistica.ipynb}
+
+\hypertarget{neurona-loguxedstica}{%
+\section{Neurona Logística}\label{neurona-loguxedstica}}
+
+\hypertarget{dr-carlos-villaseuxf1or}{%
+\subsection{Dr. Carlos Villaseñor}\label{dr-carlos-villaseuxf1or}}
+
+Paso 1. Corre la siguiente casilla para importar la paquetería
+necesaria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 2. Revisa el siguiente código de la neurona lineal y completa las
+líneas que faltan
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Logistic\_Neuron:}
+
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, n\_inputs, learning\_rate}\OperatorTok{=}\FloatTok{0.1}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.w }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(n\_inputs)}
+        \VariableTok{self}\NormalTok{.b }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand()}
+        \VariableTok{self}\NormalTok{.eta }\OperatorTok{=}\NormalTok{ learning\_rate}
+
+    \KeywordTok{def}\NormalTok{ predict\_proba(}\VariableTok{self}\NormalTok{, X):}
+\NormalTok{        Z }\OperatorTok{=}\NormalTok{ np.dot(}\VariableTok{self}\NormalTok{.w, X) }\OperatorTok{+} \VariableTok{self}\NormalTok{.b}
+\NormalTok{        Y\_est }\OperatorTok{=} \DecValTok{1}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\NormalTok{np.exp(}\OperatorTok{{-}}\NormalTok{Z))}
+        \ControlFlowTok{return}\NormalTok{ Y\_est}
+    
+    \KeywordTok{def}\NormalTok{ predict(}\VariableTok{self}\NormalTok{, X, umbral}\OperatorTok{=}\FloatTok{0.5}\NormalTok{):}
+\NormalTok{        Y\_est }\OperatorTok{=} \VariableTok{self}\NormalTok{.predict\_proba(X)}
+        \ControlFlowTok{return} \DecValTok{1} \OperatorTok{*}\NormalTok{ (Y\_est }\OperatorTok{\textgreater{}}\NormalTok{ umbral)}
+
+    \KeywordTok{def}\NormalTok{ train(}\VariableTok{self}\NormalTok{, X, Y, epochs}\OperatorTok{=}\DecValTok{100}\NormalTok{):}
+\NormalTok{        p }\OperatorTok{=}\NormalTok{ X.shape[}\DecValTok{1}\NormalTok{]}
+        \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(epochs):}
+\NormalTok{            Y\_est }\OperatorTok{=} \VariableTok{self}\NormalTok{.predict\_proba(X)}
+\NormalTok{            diff }\OperatorTok{=}\NormalTok{ Y }\OperatorTok{{-}}\NormalTok{ Y\_est}
+            \VariableTok{self}\NormalTok{.w }\OperatorTok{+=}\NormalTok{ (}\VariableTok{self}\NormalTok{.eta}\OperatorTok{/}\NormalTok{p) }\OperatorTok{*}\NormalTok{ np.dot((diff), X.T).ravel()}
+            \VariableTok{self}\NormalTok{.b }\OperatorTok{+=}\NormalTok{ (}\VariableTok{self}\NormalTok{.eta}\OperatorTok{/}\NormalTok{p) }\OperatorTok{*}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(diff)}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 3. Corre el siguiente ejemplo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Ejemplo}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{],}
+\NormalTok{              [}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{])}
+
+\NormalTok{neuron }\OperatorTok{=}\NormalTok{ Logistic\_Neuron(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{neuron.train(X,Y)}
+\BuiltInTok{print}\NormalTok{(neuron.predict\_proba(X)) }
+\BuiltInTok{print}\NormalTok{(neuron.predict(X)) }
+
+\KeywordTok{def}\NormalTok{ draw\_2d\_percep(model):}
+\NormalTok{  w1, w2, b }\OperatorTok{=}\NormalTok{ model.w[}\DecValTok{0}\NormalTok{], model.w[}\DecValTok{1}\NormalTok{], model.b }
+\NormalTok{  plt.plot([}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{],[(}\DecValTok{1}\OperatorTok{/}\NormalTok{w2)}\OperatorTok{*}\NormalTok{(}\OperatorTok{{-}}\NormalTok{w1}\OperatorTok{*}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\NormalTok{)}\OperatorTok{{-}}\NormalTok{b),(}\DecValTok{1}\OperatorTok{/}\NormalTok{w2)}\OperatorTok{*}\NormalTok{(}\OperatorTok{{-}}\NormalTok{w1}\OperatorTok{*}\DecValTok{2}\OperatorTok{{-}}\NormalTok{b)],}\StringTok{\textquotesingle{}{-}{-}k\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Primero dibujemos los puntos}
+\NormalTok{\_, p }\OperatorTok{=}\NormalTok{ X.shape}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(p):}
+  \ControlFlowTok{if}\NormalTok{ Y[i] }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{    plt.plot(X[}\DecValTok{0}\NormalTok{,i],X[}\DecValTok{1}\NormalTok{,i], }\StringTok{\textquotesingle{}or\textquotesingle{}}\NormalTok{)}
+  \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{    plt.plot(X[}\DecValTok{0}\NormalTok{,i],X[}\DecValTok{1}\NormalTok{,i], }\StringTok{\textquotesingle{}ob\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.title(}\StringTok{\textquotesingle{}Perceptrón\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.grid(}\StringTok{\textquotesingle{}on\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.xlim([}\OperatorTok{{-}}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{])}
+\NormalTok{plt.ylim([}\OperatorTok{{-}}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{])}
+\NormalTok{plt.xlabel(}\VerbatimStringTok{r\textquotesingle{}$x\_1$\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\VerbatimStringTok{r\textquotesingle{}$x\_2$\textquotesingle{}}\NormalTok{)}
+\NormalTok{draw\_2d\_percep(neuron)}
+\NormalTok{plt.savefig(}\StringTok{"output.png"}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[0.00805077 0.14813155 0.14824399 0.78853753]
+[0 0 0 1]
+\end{verbatim}
+
+\includegraphics{l02_03_fig.png}
+
+\section{l02\_04\_Regla\_delta.ipynb}
+
+\hypertarget{regla-delta}{%
+\section{Regla Delta}\label{regla-delta}}
+
+\hypertarget{dr-carlos-villaseuxf1or}{%
+\subsection{Dr. Carlos Villaseñor}\label{dr-carlos-villaseuxf1or}}
+
+Paso 1. Corre la siguiente casilla para importar la paquetería
+necesaria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 2. Corre las siguientes funciones
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ linear(z, derivative}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\NormalTok{    a }\OperatorTok{=}\NormalTok{ z}
+    \ControlFlowTok{if}\NormalTok{ derivative:}
+\NormalTok{        da }\OperatorTok{=}\NormalTok{ np.ones(z.shape)}
+        \ControlFlowTok{return}\NormalTok{ a, da}
+    \ControlFlowTok{return}\NormalTok{ a}
+
+
+\KeywordTok{def}\NormalTok{ logistic(z, derivative}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\NormalTok{    a }\OperatorTok{=} \DecValTok{1}\OperatorTok{/}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\NormalTok{ np.exp(}\OperatorTok{{-}}\NormalTok{z))}
+    \ControlFlowTok{if}\NormalTok{ derivative:}
+\NormalTok{        da }\OperatorTok{=}\NormalTok{ a }\OperatorTok{*}\NormalTok{ (}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ a)}
+        \ControlFlowTok{return}\NormalTok{ a, da}
+    \ControlFlowTok{return}\NormalTok{ a}
+
+
+\KeywordTok{def}\NormalTok{ tanh(z, derivative}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\NormalTok{    a }\OperatorTok{=}\NormalTok{ np.tanh(z)}
+    \ControlFlowTok{if}\NormalTok{ derivative:}
+\NormalTok{        da }\OperatorTok{=}\NormalTok{ (}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ a) }\OperatorTok{*}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ a)}
+        \ControlFlowTok{return}\NormalTok{ a, da}
+    \ControlFlowTok{return}\NormalTok{ a}
+
+
+\KeywordTok{def}\NormalTok{ relu(z, derivative}\OperatorTok{=}\VariableTok{False}\NormalTok{):}
+\NormalTok{    a }\OperatorTok{=}\NormalTok{ z }\OperatorTok{*}\NormalTok{ (z }\OperatorTok{\textgreater{}=} \DecValTok{0}\NormalTok{) }
+    \ControlFlowTok{if}\NormalTok{ derivative:}
+\NormalTok{        da }\OperatorTok{=}\NormalTok{ np.array(z }\OperatorTok{\textgreater{}=} \DecValTok{0}\NormalTok{, dtype}\OperatorTok{=}\BuiltInTok{float}\NormalTok{)}
+        \ControlFlowTok{return}\NormalTok{ a, da}
+    \ControlFlowTok{return}\NormalTok{ a}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 3. Revisa el siguiente código de la regla delta
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ neuron:}
+
+    \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, n\_inputs, }
+\NormalTok{                 activation\_funtion}\OperatorTok{=}\NormalTok{linear, learning\_rate}\OperatorTok{=}\FloatTok{0.1}\NormalTok{):}
+        \VariableTok{self}\NormalTok{.w }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(n\_inputs)}
+        \VariableTok{self}\NormalTok{.b }\OperatorTok{=} \OperatorTok{{-}} \DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand()}
+        \VariableTok{self}\NormalTok{.eta }\OperatorTok{=}\NormalTok{ learning\_rate}
+        \VariableTok{self}\NormalTok{.f }\OperatorTok{=}\NormalTok{ activation\_funtion}
+
+    \KeywordTok{def}\NormalTok{ predict(}\VariableTok{self}\NormalTok{, X):}
+\NormalTok{        Z }\OperatorTok{=}\NormalTok{ np.dot(}\VariableTok{self}\NormalTok{.w, X) }\OperatorTok{+} \VariableTok{self}\NormalTok{.b}
+        \ControlFlowTok{return} \VariableTok{self}\NormalTok{.f(Z)}
+
+    \KeywordTok{def}\NormalTok{ train(}\VariableTok{self}\NormalTok{, X, Y, L2}\OperatorTok{=}\DecValTok{0}\NormalTok{, epochs}\OperatorTok{=}\DecValTok{1000}\NormalTok{):}
+        
+\NormalTok{        p }\OperatorTok{=}\NormalTok{ X.shape[}\DecValTok{1}\NormalTok{]}
+        \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(epochs):}
+            
+            \CommentTok{\# Propagation {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-} }
+\NormalTok{            Z }\OperatorTok{=}\NormalTok{ np.dot(}\VariableTok{self}\NormalTok{.w, X) }\OperatorTok{+} \VariableTok{self}\NormalTok{.b}
+\NormalTok{            Yest, dY }\OperatorTok{=} \VariableTok{self}\NormalTok{.f(Z, derivative}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+            
+            \CommentTok{\# Training {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+            
+            
+            \CommentTok{\# Calculate local gradient}
+\NormalTok{            lg }\OperatorTok{=}\NormalTok{ (Y }\OperatorTok{{-}}\NormalTok{ Yest) }\OperatorTok{*}\NormalTok{ dY }
+            
+            \CommentTok{\# Update parameters}
+            \VariableTok{self}\NormalTok{.w }\OperatorTok{+=}\NormalTok{  (}\VariableTok{self}\NormalTok{.eta}\OperatorTok{/}\NormalTok{p) }\OperatorTok{*}\NormalTok{ np.dot(lg, X.T).ravel()}
+            \VariableTok{self}\NormalTok{.b }\OperatorTok{+=}\NormalTok{ (}\VariableTok{self}\NormalTok{.eta}\OperatorTok{/}\NormalTok{p) }\OperatorTok{*}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(lg)}
+\end{Highlighting}
+\end{Shaded}
+
+Paso 3. Corre este primer ejemplo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{],}
+\NormalTok{              [}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]])}
+\NormalTok{Y }\OperatorTok{=}\NormalTok{ np.array([[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{]])}
+\NormalTok{model }\OperatorTok{=}\NormalTok{ neuron(}\DecValTok{2}\NormalTok{, logistic, }\DecValTok{1}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(model.predict(X))}
+\NormalTok{model.train(X,Y, epochs}\OperatorTok{=}\DecValTok{1000}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(model.predict(X))}
+
+\NormalTok{p }\OperatorTok{=}\NormalTok{ X.shape[}\DecValTok{1}\NormalTok{]}
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(p):}
+    \ControlFlowTok{if}\NormalTok{ Y[}\DecValTok{0}\NormalTok{,i] }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{        plt.plot(X[}\DecValTok{0}\NormalTok{,i], X[}\DecValTok{1}\NormalTok{,i], }\StringTok{\textquotesingle{}or\textquotesingle{}}\NormalTok{)}
+    \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{        plt.plot(X[}\DecValTok{0}\NormalTok{,i], X[}\DecValTok{1}\NormalTok{,i], }\StringTok{\textquotesingle{}ob\textquotesingle{}}\NormalTok{)}
+        
+\NormalTok{w1, w2, b }\OperatorTok{=}\NormalTok{ model.w[}\DecValTok{0}\NormalTok{], model.w[}\DecValTok{1}\NormalTok{], model.b }
+\NormalTok{plt.plot([}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{],[(}\DecValTok{1}\OperatorTok{/}\NormalTok{w2)}\OperatorTok{*}\NormalTok{(}\OperatorTok{{-}}\NormalTok{w1}\OperatorTok{*}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\NormalTok{)}\OperatorTok{{-}}\NormalTok{b),(}\DecValTok{1}\OperatorTok{/}\NormalTok{w2)}\OperatorTok{*}\NormalTok{(}\OperatorTok{{-}}\NormalTok{w1}\OperatorTok{*}\DecValTok{2}\OperatorTok{{-}}\NormalTok{b)],}\StringTok{\textquotesingle{}{-}{-}k\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.xlim([}\OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{])}
+\NormalTok{plt.ylim([}\OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{])}
+\NormalTok{plt.xlabel(}\VerbatimStringTok{r\textquotesingle{}$x\_1$\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\VerbatimStringTok{r\textquotesingle{}$x\_2$\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[0.47411663 0.58514899 0.28278102 0.38151207]
+[0.00315057 0.12033617 0.12033252 0.85550921]
+\end{verbatim}
+
+\begin{verbatim}
+Text(0, 0.5, '$x_2$')
+\end{verbatim}
+
+\includegraphics{l02_04_figure.png}
+
+Paso 4. Corre este segundo ejemplo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OperatorTok{=} \DecValTok{100}
+\NormalTok{x }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{1} \OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ np.random.rand(p).reshape(}\DecValTok{1}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{18} \OperatorTok{*}\NormalTok{ x }\OperatorTok{+} \DecValTok{6} \OperatorTok{+} \FloatTok{2.5} \OperatorTok{*}\NormalTok{ np.random.randn(p)}
+\NormalTok{plt.plot(x,y,}\StringTok{\textquotesingle{}.b\textquotesingle{}}\NormalTok{)}
+\NormalTok{model }\OperatorTok{=}\NormalTok{ neuron(}\DecValTok{1}\NormalTok{, linear, }\FloatTok{0.1}\NormalTok{)}
+\NormalTok{model.train(x, y, epochs}\OperatorTok{=}\DecValTok{100}\NormalTok{)}
+\NormalTok{xn }\OperatorTok{=}\NormalTok{ np.array([[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{]])}
+\NormalTok{plt.plot(xn.ravel() ,model.predict(xn),}\StringTok{\textquotesingle{}{-}{-}r\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[<matplotlib.lines.Line2D at 0x7029c6152890>]
+\end{verbatim}
+
+\includegraphics{l02_04_02_figure.png}
+
+\section{neurona\_log\_dataset.py}
+
+\lstinputlisting[language=Python, caption=neurona\_log\_dataset.py]{../neurona_log_dataset.py}
+
+\textbf{Resultados:} \\
+Prediction measure: 661 of 683 \\
+Accuracy: 0.9677891654465594
+
+\end{document}
